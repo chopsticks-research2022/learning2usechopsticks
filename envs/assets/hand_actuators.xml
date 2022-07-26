@@ -1,0 +1,38 @@
+<mujoco>
+<motor name="A_UARM1" joint="UARM1" ctrlrange="-100   100" gear="1"/>
+<motor name="A_UARM2" joint="UARM2" ctrlrange="-100   100" gear="1"/>
+<motor name="A_UARM3" joint="UARM3" ctrlrange="-100   100" gear="1"/>
+<motor name="A_FARM1" joint="FARM1" ctrlrange="-100   100" gear="1"/>
+<motor name="A_WRJ0" user="2036" joint="WRJ0" ctrlrange="-50   50" gear="1"/>
+<motor name="A_WRJ1" user="2038" joint="WRJ1" ctrlrange="-50   50" gear="1"/>
+<motor name="A_WRJ2" joint="WRJ2" ctrlrange="-50   50" gear="1"/>
+<motor name="A_FFJ_CMC_X" joint="FFJ_CMC_X" ctrlrange="-10   10" gear="1"/>
+<motor name="A_FFJ_CMC_Z" joint="FFJ_CMC_Z" ctrlrange="-10   10" gear="1"/>
+<motor name="A_FFJ3" user="2004" joint="FFJ3" ctrlrange="-10   10" gear="1"/>
+<motor name="A_FFJ2" user="2002" joint="FFJ2" ctrlrange="-10      10 " gear="1"/>
+<motor name="A_FFJ1" user="2000" joint="FFJ1" ctrlrange="-10       10 " gear="1"/>
+<motor name="A_FFJ0" user="2000" joint="FFJ0" ctrlrange="-10     10 " gear="1"/>
+<motor name="A_MFJ_CMC_X" joint="MFJ_CMC_X" ctrlrange="-10   10" gear="1"/>
+<motor name="A_MFJ_CMC_Z" joint="MFJ_CMC_Z" ctrlrange="-10   10" gear="1"/>
+<motor name="A_MFJ3" user="2010" joint="MFJ3" ctrlrange="-10   10" gear="1"/>
+<motor name="A_MFJ2" user="2008" joint="MFJ2" ctrlrange="-10       10 " gear="1"/>
+<motor name="A_MFJ1" user="2006" joint="MFJ1" ctrlrange="-10       10 " gear="1"/>
+<motor name="A_MFJ0" user="2006" joint="MFJ0" ctrlrange="-10       10 " gear="1"/>
+<motor name="A_RFJ_CMC_X" joint="RFJ_CMC_X" ctrlrange="-10   10" gear="1"/>
+<motor name="A_RFJ_CMC_Z" joint="RFJ_CMC_Z" ctrlrange="-10   10" gear="1"/>
+<motor name="A_RFJ3" user="2016" joint="RFJ3" ctrlrange="-10   10" gear="1"/>
+<motor name="A_RFJ2" user="2014" joint="RFJ2" ctrlrange="-10       10 " gear="1"/>
+<motor name="A_RFJ1" user="2012" joint="RFJ1" ctrlrange="-10       10 " gear="1"/>
+<motor name="A_RFJ0" user="2012" joint="RFJ0" ctrlrange="-10       10 " gear="1"/>
+<motor name="A_THJ4" user="2034" joint="THJ4" ctrlrange="-10      10   " gear="1"/>
+<motor name="A_THJ3" user="2032" joint="THJ3" ctrlrange="-10      10 " gear="1"/>
+<motor name="A_THJ2" user="2030" joint="THJ2" ctrlrange="-10   10" gear="1"/>
+<motor name="A_THJ1" user="2028" joint="THJ1" ctrlrange="-10   10" gear="1"/>
+<motor name="A_THJ0" user="2026" joint="THJ0" ctrlrange="-10  10   " gear="1"/>
+<motor name="A_LFJ_CMC_X" joint="LFJ_CMC_X" ctrlrange="-10   10" gear="1"/>
+<motor name="A_LFJ_CMC_Z" joint="LFJ_CMC_Z" ctrlrange="-10   10" gear="1"/>
+<motor name="A_LFJ3" user="2022" joint="LFJ3" ctrlrange="-10      10 " gear="1"/>
+<motor name="A_LFJ2" user="2020" joint="LFJ2" ctrlrange="-10      10 " gear="1"/>
+<motor name="A_LFJ1" user="2019" joint="LFJ1" ctrlrange="-10      10 " gear="1"/>
+<motor name="A_LFJ0" user="2018" joint="LFJ0" ctrlrange="-10      10 " gear="1"/>
+</mujoco>

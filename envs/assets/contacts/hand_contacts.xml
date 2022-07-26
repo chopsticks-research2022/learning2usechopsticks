@@ -1,0 +1,35 @@
+<mujoco>
+<pair geom1="C_rfmiddle" geom2="C_mf" margin="10" gap="100"/>
+<pair geom1="C_rfmiddle" geom2="C_mfdistal" margin="10" gap="100"/>
+<pair geom1="C_rfmiddle" geom2="C_mfmiddle" margin="10" gap="100"/>
+<pair geom1="C_rfmiddle" geom2="C_mfproximal" margin="10" gap="100"/>
+<pair geom1="C_rfdistal" geom2="C_mf" margin="10" gap="100"/>
+<pair geom1="C_rfdistal" geom2="C_mfmiddle" margin="10" gap="100"/>
+<pair geom1="C_rfdistal" geom2="C_mfproximal" margin="10" gap="100"/>
+<pair geom1="C_rfproximal" geom2="C_mf" margin="10" gap="100"/>
+<pair geom1="C_rfproximal" geom2="C_mfdistal" margin="10" gap="100"/>
+<pair geom1="C_rfproximal" geom2="C_mfmiddle" margin="10" gap="100"/>
+<pair geom1="C_rfproximal" geom2="C_mfproximal" margin="10" gap="100"/>
+<pair geom1="C_mfmiddle" geom2="C_ff" margin="10" gap="100"/>
+<pair geom1="C_mfmiddle" geom2="C_ffdistal" margin="10" gap="100"/>
+<pair geom1="C_mfmiddle" geom2="C_ffmiddle" margin="10" gap="100"/>
+<pair geom1="C_mfmiddle" geom2="C_ffproximal" margin="10" gap="100"/>
+<pair geom1="C_mfdistal" geom2="C_ff" margin="10" gap="100"/>
+<pair geom1="C_mfdistal" geom2="C_ffmiddle" margin="10" gap="100"/>
+<pair geom1="C_mfdistal" geom2="C_ffproximal" margin="10" gap="100"/>
+<pair geom1="C_mfproximal" geom2="C_ff" margin="10" gap="100"/>
+<pair geom1="C_mfproximal" geom2="C_ffdistal" margin="10" gap="100"/>
+<pair geom1="C_mfproximal" geom2="C_ffmiddle" margin="10" gap="100"/>
+<pair geom1="C_mfproximal" geom2="C_ffproximal" margin="10" gap="100"/>
+<pair geom1="C_rfmiddle" geom2="C_lf" margin="10" gap="100"/>
+<pair geom1="C_rfmiddle" geom2="C_lfdistal" margin="10" gap="100"/>
+<pair geom1="C_rfmiddle" geom2="C_lfmiddle" margin="10" gap="100"/>
+<pair geom1="C_rfmiddle" geom2="C_lfproximal" margin="10" gap="100"/>
+<pair geom1="C_rfdistal" geom2="C_lf" margin="10" gap="100"/>
+<pair geom1="C_rfdistal" geom2="C_lfmiddle" margin="10" gap="100"/>
+<pair geom1="C_rfdistal" geom2="C_lfproximal" margin="10" gap="100"/>
+<pair geom1="C_rfproximal" geom2="C_lf" margin="10" gap="100"/>
+<pair geom1="C_rfproximal" geom2="C_lfdistal" margin="10" gap="100"/>
+<pair geom1="C_rfproximal" geom2="C_lfmiddle" margin="10" gap="100"/>
+<pair geom1="C_rfproximal" geom2="C_lfproximal" margin="10" gap="100"/>
+</mujoco>

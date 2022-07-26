@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco>
+	<compiler angle="radian"></compiler>
+	<size njmax="400" nconmax="100" nuser_jnt="1" nuser_site="1" nuser_tendon="1" nuser_sensor="1" nuser_actuator="16" nstack="600000"></size>
+	<option timestep="0.01" iterations="20" apirate="200" noslip_iterations="20"  impratio="10"></option>
+	<asset>
+		<material name="self" rgba=".7 .5 .3 0.1"/>		
+		<texture builtin="gradient" height="100" rgb1="1 1 1" rgb2="0 0 0" type="skybox" width="100"/>
+		<texture name="texplane" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 0.15 0.2" width="512" height="512"></texture>
+		<material name="MatGnd" reflectance="0.5" texture="texplane" texrepeat="2 2" texuniform="true"></material>
+		<material name="MatPlane" reflectance="0.05" texture="texplane" texrepeat="1 1" texuniform="true"></material>
+		<!-- <mesh scale=".0015 .0015 .001" file="D:/project/siggraph2022/Learn2UseChopsticks/data/mesh/bowl.stl" name='bowl'/> -->
+	</asset>
+	<default>
+		<default class="Adroit">
+			<geom friction="1 0.005 0.001" condim="3" margin="0.000" contype="1" conaffinity="1"></geom>
+			<joint limited="true" damping="0.05" armature=".001" margin="0.01" frictionloss="0.001"></joint>
+			<tendon limited="true"></tendon>
+			<site size="0.005" rgba=".4 .9 .4 0"></site>
+			<default class="D_Touch">
+				<site type="box" size="0.009 0.004 0.013" pos="0 -.004 .018" rgba=".8 .8 .8 .15" group="4"></site>
+			</default>
+			<default class="DC_Hand">
+				<geom contype="1" conaffinity="0" material="self" group="2"></geom>
+			</default>
+		</default>
+	</default>
+	
+	
+
+	<actuator>
+        <motor name="A_UARM1"  joint="UARM1" ctrlrange="-100   100" gear = "1"/>
+        <motor name="A_UARM2"  joint="UARM2" ctrlrange="-100   100" gear = "1"/>
+        <motor name="A_UARM3"  joint="UARM3" ctrlrange="-100   100" gear = "1"/>
+        <motor name="A_FARM1"  joint="FARM1" ctrlrange="-100   100" gear = "1"/>
+        <motor name="A_WRJ0" user="2036" joint="WRJ0" ctrlrange="-50   50" gear="1"/>
+        <motor name="A_WRJ1" user="2038" joint="WRJ1" ctrlrange="-50   50" gear="1"/>
+        <motor name="A_WRJ2" joint="WRJ2" ctrlrange="-50   50" gear="1"/>
+        <motor name="A_Rz1" joint="Rz1" ctrlrange="-50   50" gear="1"/>
+    </actuator>
+
+	<worldbody>
+		<light diffuse="1 1 1" dir="-0 0 -1.3" directional="true" exponent="1" pos="0 0 1.3" specular=".1 .1 .1" castshadow = "false"/>
+		<geom name="ground" pos="0 0 0" size="1 1 5" material="MatGnd" type="plane" contype="1" conaffinity="1"></geom>
+			<body name="hand mount" pos="0 -.45 0.2" euler="-1.57 0 0">
+			<inertial mass="0.100" pos="0 0 0" diaginertia="0.001 0.001 0.001"></inertial>
+			<body name = "upperarm" childclass = "Adroit" pos = "0 -0.2 0">
+				<geom  name="C_upperasrm1" type="sphere" size = '0.001' pos="0 0 0 " class = 'DC_Hand'/>
+				<joint name="UARM1" type="hinge" pos="0 0 0" axis="1 0 0" range="-1.57 1.57" damping="0" armature="1"/>
+				<body name = 'upperarm2' pos = '0 0 0'>
+					<joint name="UARM2" type="hinge" pos="0 0 0" axis="0 0 1" range="-1.57 0" damping="0" armature="1"/>
+					<geom  name="C_upperarm2" type="sphere" size = '0.001' pos="0 0 0 " class = 'DC_Hand'/>
+					<body name = 'upperarm3' pos = '0 0 0'>
+						<joint name="UARM3" type="hinge" pos="0 0 0" axis="0 -1 0" range="-1.57 1.57" damping="0" armature="1"/>
+						<geom class="DC_Hand" name="C_upperarm" type="capsule" size = '0.035 0.15 ' pos="0 0.15 0" euler="-1.57 0 0" />
+							<body name="forearm" childclass="Adroit" pos="0 0.3 0" euler="0 0 0">
+								<inertial pos="0.001 -0.002 0.15" quat="0.982 -0.016 0.000 -0.188" mass="4" diaginertia="0.01 0.01 0.0075" />
+								<joint name="FARM1" type="hinge" pos="0 0 0" axis="1 0 0" range="-1.57 1.57" damping="0" armature="1"/>
+								<geom class="DC_Hand" name="C_forearm" type="capsule" size = '0.03 0.12 ' pos="0 -.0 0.15" euler="0 0 -1.57" />
+								<!-- ======= Wrist ======= -->
+								<body name="wrist" pos="0 0 0.3">
+									<inertial pos="0.003 0.000 0.016" quat="0.504 0.496 0.495 0.504" mass="0.3" diaginertia="0.001 0.001 0.001" />
+									<joint name="WRJ0" type="hinge" pos="0 0 0" axis="1 0 0" range="-1 1" damping="0" armature=".005" user="1122"/>
+									<body name = 'wrist1' pos= '0 0 0'>
+										<joint name="WRJ1" type="hinge" pos="0 0 0" axis="0 1 0" range="-1.2 1.2" damping="0" armature=".005" user="1123"/>
+										<geom  name="C_wrist1" type="sphere" size = '0.001' pos="0 0 0 " class = 'DC_Hand'/>
+											<body name = 'wrist2' pos = '0 0 0'>
+												<joint name="WRJ2" type="hinge" pos="0 0 0" axis="0 0 1" range="-3.14 0" damping="0" armature=".005"/>
+												<geom class="DC_Hand" name="C_wrist" type="sphere" pos="0 0 0.01"  quat=".707 .707 0 0" size=".025" />
+												<body name="palm" pos="0 0 0.034">
+													<geom class="DC_Hand" name="C_palm" type="sphere" pos="0 0 0.0"  quat=".707 .707 0 0" size=".01" />
+													<body name = "chopstick2" pos = "0.008979768511812026 -0.07416523153174395 0.08645989567905493" quat = "0.6202364218307506 0.5873546323119114 0.386241170823148 0.3480503913192606">
+														<geom class="DC_Hand" name="C_hand" type="sphere" pos="0 0 0.0"  quat=".707 .707 0 0" size=".01" />
+														<geom name="chopstick2" density="1000" condim="4" size="0.004 0.13" pos="0.0 -0.0 0.0" type="capsule"  quat="0.707 0 0.707 0" friction="1 0.005 0.0001" rgba="0  0.5 0. 0.5"></geom>
+														<site name="origin2" pos="-0. 0.0 0.0" size=".0041" type="sphere" rgba="1 0 0 1."></site>
+														<site name="end2" pos="-0.13 0.0 0.00" size=".0041" type="sphere" rgba = '1 0 0 1'></site>
+														<body name="chopstick1" pos="0.045 0.035 0.0">
+															<joint name="Rz1" armature=".01" type="hinge" pos="0 0 0" axis="0 0 1" range="-0.2 0.2"></joint>
+															<geom name="chopstick1" density="1000" condim="4" size="0.004 0.13" pos="-0.045 -0.0 0.0" type="capsule" quat="0.707 0 0.707 0" friction="1 0.005 0.0001" rgba="0  0.5 0. 0.5"></geom>
+															<site name="origin1" pos="-0.045 0.0 0.0" size=".0041" type="sphere" rgba="1 0 0 1."></site>
+															<site name="c_joint" pos="0 0.0 0.0" size=".0041" type="sphere" rgba="1 0 0 1."></site>
+															<site name="end1" pos="-0.175 0.0 0.0" size=".0041" type="sphere" rgba = '1 0 0 1'></site>
+														</body>
+													</body>
+												</body>
+											</body>		
+									</body> <!--Palm Ends-->
+								</body> <!--Wrist Ends-->
+							</body> <!--Forearm/ Hand Actuation Ends-->
+					</body>
+				</body>
+			</body>
+		</body>
+
+		<!-- <body name="chopstick2_v" pos="-0.07 -0.035 0.14">
+			<joint name="chopstick2_v" type="free" armature="0.0001"></joint>
+			<geom name="chopstick2_v" density="1000" condim="4" size="0.004 0.13" pos="0.0 -0.0 0.0" type="capsule" contype="0" conaffinity="0" solimp="0.99 0.99 0.01" solref="0.01 1" quat="0.707 0 0.707 0" friction="1 0.005 0.0001" rgba="0  0.5 0. 0.5"></geom>
+			<site name="origin_v" pos="-0. 0.0 0.0" size=".01" type="sphere" rgba="0 0 0 0."></site>
+			<site name="end2_v" pos="-0.13 0.0 0.00" size=".0025" type="sphere" group="4"></site>
+			<body name="chopstick1_v" pos="0.045 0.035 0.0">
+				<joint name="Rz1_v" armature=".01" type="hinge" pos="0 0 0" axis="0 0 1" range="-0.5 0.5"></joint>
+				<geom name="chopstick1_v" density="1000" condim="4" size="0.004 0.13" pos="-0.045 -0.0 0.0" type="capsule" contype="0" conaffinity="0" solimp="0.99 0.99 0.01" solref="0.01 1" quat="0.707 0 0.707 0" friction="1 0.005 0.0001" rgba="0  0.5 0. 0.5"></geom>
+				<site name="c_thtip_v" pos="0.0 0.0 0.0025" size=".004" type="sphere" rgba="1 0 0 1"></site>
+				<site name="c_mftip_v" pos="-0.04 0.0 -0.0025" size=".004" type="sphere" rgba="1 0 0 1"></site>
+				<site name="c_fftip_v" pos="-0.025 0.0025 0.00" size=".004" type="sphere" rgba="1 0 0 1"></site>
+				<site name="end1_v" pos="-0.175 0.0 0.0" size=".0025" type="sphere" group="4"></site>
+			</body>
+		</body> -->
+		<body name="bowl" pos="-0.3 -0.1 0" quat="1.0 0.0 0.0 0.0">
+			<geom name="wall1" pos = '-0.1 0 0.02' size = '0.005 0.1 0.02' type="box" rgba="1 1 0.8 1"></geom>
+			<geom name="wall2" pos = '0.1 0 0.02' size = '0.005 0.1 0.02' type="box" rgba="1 1 0.8 1"></geom>
+			<geom name="wall3" pos = '0 0.1 0.02' size = '0.1 0.005 0.02' type="box" rgba="1 1 0.8 1"></geom>
+			<geom name="wall4" pos = '0 -0.1 0.02' size = '0.1 0.005 0.02' type="box" rgba="1 1 0.8 1"></geom>
+		</body>
+
+
+
+		<body name="object_0" pos="-0.3 -0.1 0.1" quat="1.0 0.0 0.0 0.0">
+			<joint name="object_0" type="free" armature="0.0001"></joint>
+			<geom name="object_0" size="0.009736723462287586" pos="0 0 0" type="sphere" rgba="1 1 0 1"></geom>
+		</body>
+	
+
+	
+
+		
+
+	</worldbody>
+</mujoco>

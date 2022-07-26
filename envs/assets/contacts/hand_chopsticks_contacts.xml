@@ -1,0 +1,18 @@
+<mujoco>
+<pair geom1="chopstick1" geom2="C_ff" margin="10" gap="100"></pair>
+<pair geom1="chopstick1" geom2="C_mf" margin="10" gap="100"></pair>
+<pair geom1="chopstick1" geom2="C_th" margin="10" gap="100"></pair>
+<pair geom1="chopstick2" geom2="C_rf" margin="10" gap="100"></pair>
+<pair geom1="chopstick2" geom2="C_lf" margin="10" gap="100"></pair>
+<pair geom1="chopstick2" geom2="C_thm" margin="10" gap="100"></pair>
+<pair geom1="chopstick1" geom2="C_ffproximal" condim="3" margin="0" gap="0"></pair>
+<pair geom1="chopstick1" geom2="C_ffproximal_trick" margin="10" gap="100"></pair>
+<pair geom1="chopstick2" geom2="C_ff_cmc" condim="4" margin="0" gap="0"></pair>
+<pair geom1="chopstick1" geom2="C_ffdistal" condim="4" margin="0" gap="0"></pair>
+<pair geom1="chopstick1" geom2="C_mfdistal" condim="4" margin="0" gap="0"></pair>
+<pair geom1="chopstick1" geom2="C_thdistal" condim="4" margin="0" gap="0"></pair>
+<pair geom1="chopstick2" geom2="C_thdistal" condim="4" margin="0" gap="0"></pair>
+<pair geom1="chopstick2" geom2="C_rfdistal" condim="4" margin="0" gap="0"></pair>
+<pair geom1="chopstick2" geom2="C_thmiddle" condim="4" margin="0" gap="0"></pair>
+<pair geom1="chopstick2" geom2="C_lfdistal" condim="4" margin="0" gap="0"></pair>
+</mujoco>

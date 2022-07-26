@@ -1,0 +1,128 @@
+<mujoco>
+<fixed name="T_FFJ3r" range="-0.018 0.018" user="1204">
+	<joint joint="FFJ3" coef="0.010"/>
+</fixed>
+<fixed name="T_FFJ3l" range="-0.018 0.018" user="1205">
+	<joint joint="FFJ3" coef="-0.010"/>
+</fixed>
+<fixed name="T_FFJ2u" range="-0.007 0.030" user="1202">
+	<joint joint="FFJ2" coef="0.010"/>
+</fixed>
+<fixed name="T_FFJ2d" range="-0.030 0.007" user="1203">
+	<joint joint="FFJ2" coef="-0.010"/>
+</fixed>
+<fixed name="T_FFJ1c" range="-0.0010 0.0010">
+	<joint joint="FFJ0" coef="0.00705"/>
+	<joint joint="FFJ1" coef="-0.00805"/>
+</fixed>
+<fixed name="T_FFJ1u" range="-0.007 0.030" user="1200">
+	<joint joint="FFJ0" coef="0.00705"/>
+	<joint joint="FFJ1" coef="0.00805"/>
+</fixed>
+<fixed name="T_FFJ1d" range="-0.030 0.007" user="1201">
+	<joint joint="FFJ0" coef="-0.00705"/>
+	<joint joint="FFJ1" coef="-0.00805"/>
+</fixed>
+<fixed name="T_MFJ3r" range="-0.018 0.018" user="1210">
+	<joint joint="MFJ3" coef="0.010"/>
+</fixed>
+<fixed name="T_MFJ3l" range="-0.018 0.018" user="1211">
+	<joint joint="MFJ3" coef="-0.010"/>
+</fixed>
+<fixed name="T_MFJ2u" range="-0.007 0.030" user="1208">
+	<joint joint="MFJ2" coef="0.010"/>
+</fixed>
+<fixed name="T_MFJ2d" range="-0.030 0.007" user="1209">
+	<joint joint="MFJ2" coef="-0.010"/>
+</fixed>
+<fixed name="T_MFJ1c" range="-0.001 0.001">
+	<joint joint="MFJ0" coef="0.00705"/>
+	<joint joint="MFJ1" coef="-0.00805"/>
+</fixed>
+<fixed name="T_MFJ1u" range="-0.007 0.030" user="1206">
+	<joint joint="MFJ0" coef="0.00705"/>
+	<joint joint="MFJ1" coef="0.00805"/>
+</fixed>
+<fixed name="T_MFJ1d" range="-0.030 0.007" user="1207">
+	<joint joint="MFJ0" coef="-0.00705"/>
+	<joint joint="MFJ1" coef="-0.00805"/>
+</fixed>
+<fixed name="T_RFJ3r" range="-0.018 0.018" user="1216">
+	<joint joint="RFJ3" coef="0.010"/>
+</fixed>
+<fixed name="T_RFJ3l" range="-0.018 0.018" user="1217">
+	<joint joint="RFJ3" coef="-0.010"/>
+</fixed>
+<fixed name="T_RFJ2u" range="-0.007 0.030" user="1214">
+	<joint joint="RFJ2" coef="0.010"/>
+</fixed>
+<fixed name="T_RFJ2d" range="-0.030 0.007" user="1215">
+	<joint joint="RFJ2" coef="-0.010"/>
+</fixed>
+<fixed name="T_RFJ1c" range="-0.001 0.001">
+	<joint joint="RFJ0" coef="0.00705"/>
+	<joint joint="RFJ1" coef="-0.00805"/>
+</fixed>
+<fixed name="T_RFJ1u" range="-0.007 0.030" user="1212">
+	<joint joint="RFJ0" coef="0.00705"/>
+	<joint joint="RFJ1" coef="0.00805"/>
+</fixed>
+<fixed name="T_RFJ1d" range="-0.030 0.007" user="1213">
+	<joint joint="RFJ0" coef="-0.00705"/>
+	<joint joint="RFJ1" coef="-0.00805"/>
+</fixed>
+<fixed name="T_THJ4a" range="-0.018 0.018" user="1234">
+	<joint joint="THJ4" coef="0.01636"/>
+</fixed>
+<fixed name="T_THJ4c" range="-0.018 0.018" user="1235">
+	<joint joint="THJ4" coef="-0.01636"/>
+</fixed>
+<fixed name="T_THJ3u" range="-0.007 0.030" user="1232">
+	<joint joint="THJ3" coef="0.010"/>
+</fixed>
+<fixed name="T_THJ3d" range="-0.030 0.007" user="1233">
+	<joint joint="THJ3" coef="-0.010"/>
+</fixed>
+<fixed name="T_THJ2u" range="-0.018 0.018" user="1230">
+	<joint joint="THJ2" coef="0.011"/>
+</fixed>
+<fixed name="T_THJ2d" range="-0.018 0.018" user="1231">
+	<joint joint="THJ2" coef="-0.011"/>
+</fixed>
+<fixed name="T_THJ1r" range="-0.018 0.018" user="1228">
+	<joint joint="THJ1" coef="0.011"/>
+</fixed>
+<fixed name="T_THJ1l" range="-0.018 0.018" user="1229">
+	<joint joint="THJ1" coef="-0.011"/>
+</fixed>
+<fixed name="T_THJ0r" range="-0.030 0.007" user="1226">
+	<joint joint="THJ0" coef="0.009"/>
+</fixed>
+<fixed name="T_THJ0l" range="-0.007 0.030" user="1227">
+	<joint joint="THJ0" coef="-0.009"/>
+</fixed>
+<fixed name="T_LFJ3r" range="-0.018 0.018">
+	<joint joint="LFJ3" coef="0.010"/>
+</fixed>
+<fixed name="T_LFJ3l" range="-0.018 0.018">
+	<joint joint="LFJ3" coef="-0.010"/>
+</fixed>
+<fixed name="T_LFJ2u" range="-0.007 0.030">
+	<joint joint="LFJ2" coef="0.010"/>
+</fixed>
+<fixed name="T_LFJ2d" range="-0.030 0.007">
+	<joint joint="LFJ2" coef="-0.010"/>
+</fixed>
+<fixed name="T_LFJ1c" range="-0.001 0.001">
+	<joint joint="LFJ0" coef="0.00705"/>
+	<joint joint="LFJ1" coef="-0.00805"/>
+</fixed>
+<fixed name="T_LFJ1u" range="-0.007 0.030">
+	<joint joint="LFJ0" coef="0.00705"/>
+	<joint joint="LFJ1" coef="0.00805"/>
+</fixed>
+<fixed name="T_LFJ1d" range="-0.030 0.007">
+	<joint joint="LFJ0" coef="-0.00705"/>
+	<joint joint="LFJ1" coef="-0.00805"/>
+</fixed>
+</mujoco>

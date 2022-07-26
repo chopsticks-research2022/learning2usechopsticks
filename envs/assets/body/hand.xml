@@ -1,0 +1,147 @@
+<mujoco>
+<body name="wrist" pos="-0.0 0 0.3">
+	<inertial pos="0.003 0.000 0.016" quat="0.504 0.496 0.495 0.504" mass="0.3" diaginertia="0.001 0.001 0.001"/>
+	<joint name="WRJ0" type="hinge" pos="0 0 0" axis="1 0 0" range="-1 1" damping="0" armature=".005" user="1122"/>			
+	<body name="wrist1" pos="0 0 0">
+		<joint name="WRJ1" type="hinge" pos="0 0 0" axis="0 1 0" range="-1.2 1.2" damping="0" armature=".005" user="1123"/>								
+		<geom class="DC_Hand" name="C_wrist1" type="sphere" size="0.001"/>
+		<body name="wrist2" pos="0 0 0">
+			<joint name="WRJ2" type="hinge" pos="0 0 0" axis="0 0 1" range="-3.14 0" damping="0" armature=".005"/>
+			<geom class="DC_Hand" name="C_wrist" type="sphere" pos="0 0 0.01" quat=".707 .707 0 0" size=".025"/>
+			<body name="palm" pos="0 0 0.034">
+				<body name="ff_cmc" pos="0.033 0 0.095">
+					<joint name="FFJ_CMC_X" type="hinge" pos="-0.02 0 -0.095" axis="0.095 0 -0.02" range="0 0.001"/>
+					<joint name="FFJ_CMC_Z" type="hinge" pos="-0.02 0 -0.095" axis="0.02 0 0.095" range="-0.001 0.001"/>
+					<geom class="DC_Hand" name="C_ff_cmc" type="capsule" pos="-0.01 0 -0.0475" size="0.013 .0475" euler="0 0.16 0"/>
+					<geom class="DC_Hand" name="C_ff_cmc_trick" type="capsule" pos="-0.01 0 -0.0475" size="0.013 .0475" euler="0 0.16 0"/>
+					<body name="ffknuckle" pos="0.0 0 0.0">
+						<inertial pos="-0.000 0.000 0.000" quat="0.520 0.854 0.006 -0.003" mass="0.008" diaginertia="0.00001 0.00001 0.00001"/>
+						<joint name="FFJ3" type="hinge" pos="0 0 0" axis="0 1 0" range="-0.136 0.136" user="1103"/>
+						<body name="ffproximal" pos="0 0 0">
+							<inertial pos="0.000 0.000 0.023" quat="0.707 -0.004 0.004 0.707" mass="0.014" diaginertia="0.00001 0.00001 0.00001"/>
+							<joint name="FFJ2" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1102"/>
+							<geom class="DC_Hand" name="C_ffproximal" type="capsule" pos="0 0 .0225" size=".01 .0225"/>
+							<geom class="DC_Hand" name="C_ffproximal_trick" type="capsule" pos="0 0 .0225" size=".01 .0225"/>
+							<body name="ffmiddle" pos="0 0 0.045">
+								<inertial pos="-0.000 -0.000 0.011" quat="0.707 0.000 -0.000 0.707" mass="0.012" diaginertia="0.00001 0.00001 0.00001"/>
+								<joint name="FFJ1" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1101"/>
+								<geom class="DC_Hand" name="C_ffmiddle" type="capsule" pos="0 0 .0125" size=".00805 .0125"/>
+								<body name="ffdistal" pos="0 0 0.025">
+									<inertial pos="0 -0.000 0.015" quat="0.707 -0.003 0.003 0.707" mass="0.010" diaginertia="0.00001 0.00001 0.00001"/>
+									<joint name="FFJ0" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1100"/>
+									<geom class="DC_Hand" name="C_ffdistal" type="capsule" pos="0 -.00 .012" size=".0075 .011 " condim="4" euler="0 0 0"/>
+									<geom class="DC_Hand" name="C_ff" type="sphere" pos="0 0 .0195" size=".0075 " condim="4"/>
+									<site name="S_fftip" type="capsule" pos="0 -.00 .012" size=".0075 .011 " rgba="0 0 0 0" euler="0 0 0"/>
+									<site class="D_Touch" name="Tch_fftip"/>
+								</body>
+							</body>
+						</body>
+					</body>
+				</body>
+				<body name="mf_cmc" pos="0.011 0 0.099">
+					<joint name="MFJ_CMC_X" type="hinge" pos="-0.011 0 -0.099" axis="0.099 0 -0.011" range="0 0.01"/>
+					<joint name="MFJ_CMC_Z" type="hinge" pos="-0.011 0 -0.099" axis="0.011 0 0.099" range="-0.2 0.2"/>
+					<geom class="DC_Hand" name="C_mf_cmc" type="box" pos="-0.0055 0 -0.0495" size=".013 0.01 .052" euler="0 0.11 0"/>
+					<body name="mfknuckle" pos="0.0 0 0.0">
+						<inertial pos="-0.000 0.000 0.000" quat="0.520 0.854 0.006 -0.003" mass="0.008" diaginertia="0.00001 0.00001 0.00001"/>
+						<joint name="MFJ3" type="hinge" pos="0 0 0" axis="0 1 0" range="-0.136 0.136" user="1107"/>
+						<body name="mfproximal" pos="0 0 0">
+							<inertial pos="0.000 0.000 0.023" quat="0.707 -0.004 0.004 0.707" mass="0.014" diaginertia="0.00001 0.00001 0.00001"/>
+							<joint name="MFJ2" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1106"/>
+							<geom class="DC_Hand" name="C_mfproximal" type="capsule" pos="0 0 .0225" size=".01 .0225"/>
+							<body name="mfmiddle" pos="0 0 0.045">
+								<inertial pos="-0.000 -0.000 0.012" quat="0.707 0.000 -0.000 0.707" mass="0.012" diaginertia="0.00001 0.00001 0.00001"/>
+								<joint name="MFJ1" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1105"/>
+								<geom class="DC_Hand" name="C_mfmiddle" type="capsule" pos="0 0 .0125" size=".00805 .0125"/>
+								<body name="mfdistal" pos="0 0 0.025">
+									<inertial pos="0 -0.000 0.015" quat="0.707 -0.003 0.003 0.707" mass="0.010" diaginertia="0.00001 0.00001 0.00001"/>
+									<joint name="MFJ0" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1104"/>
+									<geom class="DC_Hand" name="C_mfdistal" type="capsule" pos="0 0 .012" size=".0075 .011 " condim="4" euler="0 0 0"/>
+									<geom class="DC_Hand" name="C_mf" type="sphere" pos="0.0 0 .018" size=".0075 " rgba="0 0 0 0"/>
+									<site name="S_mftip" type="capsule" pos="0 0 .012" size=".0075 .011 " rgba="0 0 0 0" euler="0 0 0"/>
+									<site class="D_Touch" name="Tch_mftip"/>
+								</body>
+							</body>
+						</body>
+					</body>
+				</body>
+				<body name="rf_cmc" pos="-0.011 0 0.095">
+					<joint name="RFJ_CMC_X" type="hinge" pos="0.011 0 -0.095" axis="0.095 0 0.011" range="0 0.2"/>
+					<joint name="RFJ_CMC_Z" type="hinge" pos="0.011 0 -0.095" axis="-0.011 0 0.095" range="-0.0 0.69"/>
+					<geom class="DC_Hand" name="C_rf_cmc" type="box" pos="0.0055 0 -0.0475" size=".013  0.01 .055" euler="0 -0.11 0"/>
+					<body name="rfknuckle" pos="-0.0 0 0.0">
+						<inertial pos="-0.000 0.000 0.000" quat="0.520 0.854 0.006 -0.003" mass="0.008" diaginertia="0.00001 0.00001 0.00001"/>
+						<joint name="RFJ3" type="hinge" pos="0 0 0" axis="0 1 0" range="-0.136 0.136" user="1111"/>
+						<body name="rfproximal" pos="0 0 0">
+							<inertial pos="0.000 0.000 0.023" quat="0.707 -0.004 0.004 0.707" mass="0.014" diaginertia="0.00001 0.00001 0.00001"/>
+							<joint name="RFJ2" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1110"/>
+							<geom class="DC_Hand" name="C_rfproximal" type="capsule" pos="0 0 .0225" size=".01 .0225"/>
+							<body name="rfmiddle" pos="0 0 0.045">
+								<inertial pos="-0.000 -0.000 0.012" quat="0.707 0.000 -0.000 0.707" mass="0.012" diaginertia="0.00001 0.00001 0.00001"/>
+								<joint name="RFJ1" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1109"/>
+								<geom class="DC_Hand" name="C_rfmiddle" type="capsule" pos="0 0 .0125" size=".00805 .0125"/>
+								<body name="rfdistal" pos="0 0 0.025">
+									<inertial pos="0 -0.000 0.015" quat="0.707 -0.003 0.003 0.707" mass="0.010" diaginertia="0.00001 0.00001 0.00001"/>
+									<joint name="RFJ0" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1108"/>
+									<geom class="DC_Hand" name="C_rfdistal" type="capsule" pos="0 -.0 .012" size=".0075 .011 " condim="4" euler="0 0 0"/>
+									<geom class="DC_Hand" name="C_rf" type="sphere" pos="0.0035 0 .016" size=".0075 " rgba="0 0 0 0"/>
+									<site name="S_rftip" type="capsule" pos="0 0 .012" size=".0075 .011 " rgba="0 0 0 0" euler="0 0 0"/>
+									<site class="D_Touch" name="Tch_rftip"/>
+								</body>
+							</body>
+						</body>
+					</body>
+				</body>
+				<body name="thbase" pos="0.034 -0.009 0.029" euler="0.  0. 0">
+					<inertial pos="0 0 0" mass="0.010" diaginertia="0.00001 0.00001 0.00001"/>
+					<joint name="THJ4" type="hinge" pos="0 0 0" axis="0 0 -1" range="-0.01 0.01" user="1121"/>
+					<joint name="THJ2" type="hinge" pos="0 0 0" axis="0 1 0" range="-1 1" user="1119"/>
+					<joint name="THJ3" type="hinge" pos="0 0 0" axis="1 0 0" range="-0. 1" user="1120"/>
+					<body name="thproximal" pos="0 0 0" euler="0 0 -0.">
+						<inertial pos="-0.000 -0.000 0.017" quat="0.982 -0.000 0.001 0.191" mass="0.016" diaginertia="0.00001 0.00001 0.00001"/>
+						<geom class="DC_Hand" name="C_thproximal" type="capsule" pos="0 0 .019" size=".013 .019"/>
+						<body name="thmiddle" pos="0 0 0.038">
+							<inertial pos="0.000 -0.000 0.016" quat="1.000 -0.001 -0.007 0.003" mass="0.016" diaginertia="0.00001 0.00001 0.00001"/>
+							<joint name="THJ1" type="hinge" pos="0 0 0" axis="0 1 0" range="-1.57 0" user="1118"/>
+							<geom class="DC_Hand" name="C_thmiddle" type="capsule" pos="0 0 .016" size=".011 .016"/>
+							<geom class="DC_Hand" name="C_trick" type="sphere" pos="0 0 0.026" size=".012" condim="4" rgba="0 0 0 0"/>
+							<geom class="DC_Hand" name="C_thm" type="capsule" pos="0 0 .016" size=".011 .016"/>
+							<body name="thdistal" pos="0 0 0.032">
+								<inertial pos="0.000 -0.000 0.016" quat="0.999 -0.005 -0.047 0.005" mass="0.016" diaginertia="0.00001 0.00001 0.00001"/>
+								<joint name="THJ0" type="hinge" pos="0 0 0" axis="0 1 0" range="-1.571 -0.1" user="1117"/>
+								<geom class="DC_Hand" name="C_thdistal" type="capsule" pos="0 0 .016837" size=".01 .015" condim="4" euler="0 0 0"/>
+								<geom class="DC_Hand" name="C_th" type="sphere" pos="-0.01 -0.0 .021837" size=".003" rgba=" 0 0 0 0"/>
+								<site name="S_thtip" type="sphere" pos="-0.0 -0. .021837" size=".005 " rgba="0 0 0 0" euler="0 0 0"/>
+								<site class="D_Touch" name="Tch_thtip" size="0.005 0.011 0.016" pos="-.005 0 0.02"/>
+							</body>
+						</body>
+					</body>
+				</body>
+				<body name="lf_cmc" pos="-0.03 0 0.095">
+					<joint name="LFJ_CMC_X" type="hinge" pos="0.03 0 -0.095" axis="0.095 0 0.02" range="0 0.2"/>
+					<joint name="LFJ_CMC_Z" type="hinge" pos="0.03 0 -0.095" axis="-0.02 0 0.095" range="0 0.9"/>
+					<geom class="DC_Hand" name="C_lf_cmc" type="box" pos="0.01 0 -0.0475" size=".013 0.01 .052" euler="0 -0.2 0"/>
+					<body name="lfknuckle" pos="-0.0 0 0.0">
+						<inertial pos="-0.000 0.000 0.000" quat="0.520 0.854 0.006 -0.003" mass="0.008" diaginertia="0.00001 0.00001 0.00001"/>
+						<joint name="LFJ3" type="hinge" pos="0 0 0" axis="0 1 0" range="-0.136 0.136" user="1115"/>
+						<body name="lfproximal" pos="0 0 0">
+							<joint name="LFJ2" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1114"/>
+							<geom class="DC_Hand" name="C_lfproximal" type="capsule" pos="0 0 .0125" size=".008 .015"/>
+							<body name="lfmiddle" pos="0 0 0.025">
+								<joint name="LFJ1" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1113"/>
+								<geom class="DC_Hand" name="C_lfmiddle" type="capsule" pos="0 0 .0125" size=".00705 .0125"/>
+								<body name="lfdistal" pos="0 0 0.025">
+									<joint name="LFJ0" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571"/>
+									<geom class="DC_Hand" name="C_lfdistal" type="capsule" pos="0 0 .012" size=".006 .011 " condim="4" euler="0 0 0"/>
+									<geom class="DC_Hand" name="C_lf" type="sphere" pos="0.00 0 .016" size=".006 "/>
+									<site name="S_lftip" type="capsule" pos="0 0 .012" size=".006 .011 " rgba="0 0 0 0" euler="0 0 0"/>
+								</body>
+							</body>
+						</body>
+					</body>
+				</body>
+			</body>
+		</body>
+	</body>
+</body>
+</mujoco>

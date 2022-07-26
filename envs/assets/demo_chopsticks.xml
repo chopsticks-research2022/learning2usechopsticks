@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco>
+	<compiler angle="radian"/>
+	<size njmax="400" nconmax="400" nuser_jnt="1" nuser_site="1" nuser_tendon="1" nuser_sensor="1" nuser_actuator="16" nstack="600000"/>
+	<option timestep="0.01" iterations="20" apirate="200" impratio="1" noslip_iterations="100"/>
+	<asset>
+		<material name="self" rgba=".7 .5 .3 1"/>
+		<material name="table" rgba=".4 .4 .4 1"/>
+		<material name="geom" texture="texgeom" texuniform="true"/>
+		<material name="MatGnd" reflectance="0.5" texture="texplane" texrepeat="2 2" texuniform="true"/>
+		<material name="MatPlane" reflectance="0.05" texture="texplane" texrepeat="1 1" texuniform="true"/>
+		<texture builtin="flat" height="1278" mark="cross" markrgb="1 1 1" name="texgeom" random="0.01" rgb1="0.8 0.6 0.4" rgb2="0.8 0.6 0.4" type="cube" width="127"/>
+		<texture builtin="gradient" height="100" rgb1="1 1 1" rgb2="0 0 0" type="skybox" width="100"/>
+		<texture name="texplane" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 0.15 0.2" width="512" height="512"/>
+	</asset>
+	<visual>
+		<scale forcewidth="0.01" contactwidth="0.003"/>
+	</visual>
+	<default>
+		<default class="Adroit">
+			<geom friction="1 0.005 0.001" condim="3" margin="0.000" contype="1" conaffinity="1"/>
+			<joint limited="true" damping="0.05" armature=".001" margin="0.01" frictionloss="0.001"/>
+			<tendon limited="true"></tendon>
+			<site size="0.005" rgba=".4 .9 .4 0"/>
+			<default class="D_Touch">
+				<site type="box" size="0.009 0.004 0.013" pos="0 -.004 .018" rgba=".8 .8 .8 0" group="4"/>
+			</default>
+			<default class="DC_Hand">
+				<geom contype="1" conaffinity="0" material="self" group="2"/>
+			</default>
+		</default>
+		<default class="humanoid">
+			<geom type="capsule" material="self" group="2"/>
+			<default class="stiff_medium">
+				<joint stiffness="10" damping="2"/>
+			</default>
+			<default class="sensor_site">
+				<site type="sphere" size="0.01" group="4" rgba="1 0 0 0"/>
+			</default>
+		</default>
+	</default>
+	<contact>
+		<include file="contacts/hand_contacts.xml"/>
+		<include file="contacts/hand_chopsticks_contacts.xml"/>
+		<pair geom1="chopstick1_end" geom2="object_0" margin="10" gap="100"></pair>
+		<pair geom1="chopstick2_end" geom2="object_0" margin="10" gap="100"></pair>
+		<pair geom1="chopstick1" geom2="object_0" margin="0" gap="0" condim="4" solimp="0.99 0.99 0.01" solref="0.01 1"></pair>
+		<pair geom1="chopstick2" geom2="object_0" margin="0" gap="0" condim="4" solimp="0.99 0.99 0.01" solref="0.01 1"></pair>
+		<pair geom1="chopstick1_end" geom2="object_1" margin="10" gap="100"></pair>
+		<pair geom1="chopstick2_end" geom2="object_1" margin="10" gap="100"></pair>
+		<pair geom1="chopstick1" geom2="object_1" margin="0" gap="0" condim="4" solimp="0.99 0.99 0.01" solref="0.01 1"></pair>
+		<pair geom1="chopstick2" geom2="object_1" margin="0" gap="0" condim="4" solimp="0.99 0.99 0.01" solref="0.01 1"></pair>
+		<pair geom1="chopstick1_end" geom2="object_2" margin="10" gap="100"></pair>
+		<pair geom1="chopstick2_end" geom2="object_2" margin="10" gap="100"></pair>
+		<pair geom1="chopstick1" geom2="object_2" margin="0" gap="0" condim="4" solimp="0.99 0.99 0.01" solref="0.01 1"></pair>
+		<pair geom1="chopstick2" geom2="object_2" margin="0" gap="0" condim="4" solimp="0.99 0.99 0.01" solref="0.01 1"></pair>
+		<pair geom1="chopstick1_end" geom2="object_3" margin="10" gap="100"></pair>
+		<pair geom1="chopstick2_end" geom2="object_3" margin="10" gap="100"></pair>
+		<pair geom1="chopstick1" geom2="object_3" margin="0" gap="0" condim="4" solimp="0.99 0.99 0.01" solref="0.01 1"></pair>
+		<pair geom1="chopstick2" geom2="object_3" margin="0" gap="0" condim="4" solimp="0.99 0.99 0.01" solref="0.01 1"></pair>
+		<pair geom1="chopstick1_end" geom2="object_4" margin="10" gap="100"></pair>
+		<pair geom1="chopstick2_end" geom2="object_4" margin="10" gap="100"></pair>
+		<pair geom1="chopstick1" geom2="object_4" margin="0" gap="0" condim="4" solimp="0.99 0.99 0.01" solref="0.01 1"></pair>
+		<pair geom1="chopstick2" geom2="object_4" margin="0" gap="0" condim="4" solimp="0.99 0.99 0.01" solref="0.01 1"></pair>
+	</contact>
+	<tendon>
+		<include file="hand_tendon.xml"/>
+	</tendon>
+	<sensor>
+		<touch name="sensor_end1" site="end1"/>
+		<touch name="sensor_end2" site="end2"/>
+		<touch name="sensor_th" site="S_thtip"/>
+		<touch name="sensor_ff" site="S_fftip"/>
+		<touch name="sensor_mf" site="S_mftip"/>
+		<touch name="sensor_rf" site="S_rftip"/>
+		<touch name="sensor_lf" site="S_lftip"/>
+	</sensor>
+	<actuator>
+		<include file="hand_actuators.xml"/>
+	</actuator>
+	<worldbody>
+		<light diffuse="1 1 1" dir="-0 1.3 -1.3" directional="true" exponent="1" pos="0 0 1.3" specular=".1 .1 .1" castshadow="false"></light>
+		<geom name="table" pos="-0.24 0 -0.2" size="0.5 0.315 0.2" material="table" type="box" contype="1" conaffinity="1"/>
+		<include file="body/arm.xml"/>
+		<body name="chopstick1" pos="-0.07 -0.0 0.14" user="0.035503229090770326 -0.06113577730420004 0.09101872757130249 0.5588906933498429 0.5294254446740649 0.4990982547213093 0.39780752073426606">
+			<joint name="chopstick1" type="free" armature="0.0001"/>
+			<geom name="chopstick1" density="1000" condim="4" size="0.004 0.13" pos="0.0 -0.0 0.0" type="capsule" quat="0.707 0 0.707 0" solimp="0.99 0.99 0.01" solref="0.01 1" friction="1 0.005 0.0001" rgba="0.5  0.5 0. 1"/>
+			<geom name="chopstick1_end" density="1" size="0.004" pos="-0.13 -0.0 0.0" type="sphere" quat="0.707 0 0.707 0"/>
+			<site name="end1" pos="-0.13 0.0 0.00" size=".01" type="sphere" rgba="0.5 0 0 0."/>
+			<site name="c_joint" pos="0.045 0.0 0.0" size=".004" type="sphere"/>
+		</body>
+		<body name="chopstick2" pos="-0.07 -0.035 0.14" user="0.035503229090770326 -0.06113577730420004 0.09101872757130249 0.5588906933498429 0.5294254446740649 0.4990982547213093 0.39780752073426606">
+			<joint name="chopstick2" type="free" armature="0.0001"/>
+			<geom name="chopstick2" density="1000" condim="4" size="0.004 0.13" pos="-0.0 -0.0 0.0" type="capsule" quat="0.707 0 0.707 0" solimp="0.99 0.99 0.01" solref="0.01 1" friction="1 0.005 0.0001" rgba="0.5  0.5 0. 1"/>
+			<geom name="chopstick2_end" density="1" size="0.004" pos="-0.13 -0.0 0.0" type="sphere" quat="0.707 0 0.707 0"/>
+			<site name="end2" pos="-0.13 0.0 0.0" size=".01" type="sphere" rgba="0.5 0 0 0."/>
+			<site name="origin" pos="-0. 0.0 0.0" size=".01" type="sphere" rgba="1 0 0 0."/>
+		</body>
+		<body name="chopstick2_v" pos="-0.07 -0.035 0.14">
+			<joint name="chopstick2_v" type="free" armature="0.0001"/>
+			<geom name="chopstick2_v" density="1000" condim="4" size="0.004 0.13" pos="0.0 -0.0 0.0" type="capsule" contype="0" conaffinity="0" solimp="0.99 0.99 0.01" solref="0.01 1" quat="0.707 0 0.707 0" friction="1 0.005 0.0001" rgba="0  0.5 0. 0.7"/>
+			<site name="origin_v" pos="-0. 0.0 0.0" size=".01" type="sphere" rgba="0 0 0 0."/>
+			<site name="end2_v" pos="-0.13 0.0 0.00" size=".0025" type="sphere" group="4"/>
+			<body name="chopstick1_v" pos="0.045 0.035 0.0">
+				<joint name="Rz1_v" armature=".01" type="hinge" pos="0 0 0" axis="0 0 1" range="-0.5 0.5"/>
+				<geom name="chopstick1_v" density="1000" condim="4" size="0.004 0.13" pos="-0.045 -0.0 0.0" type="capsule" contype="0" conaffinity="0" solimp="0.99 0.99 0.01" solref="0.01 1" quat="0.707 0 0.707 0" friction="1 0.005 0.0001" rgba="0  0.5 0. 0.7"/>
+				<site name="c_thtip_v" pos="0.0 0.0 0.0025" size=".004" type="sphere" rgba="1 0 0 1"/>
+				<site name="c_mftip_v" pos="-0.04 0.0 -0.0025" size=".004" type="sphere" rgba="1 0 0 1"/>
+				<site name="c_fftip_v" pos="-0.025 0.0025 0.00" size=".004" type="sphere" rgba="1 0 0 1"/>
+				<site name="end1_v" pos="-0.175 0.0 0.0" size=".0025" type="sphere" group="4"/>
+			</body>
+		</body>
+		<body name="root" pos="-0.25 -0.44 0.02" euler="1.57 0 0" childclass="humanoid">
+			<body name="lowerback">
+				<body name="upperback" pos="0.000565862 0.113213 0">
+					<geom name="upperback" size="0.1 0.07" pos="0.000256264 -0.22 0" quat="0.707 0 0.707 0" contype="0" conaffinity="0"/>
+					<body name="thorax" pos="0.000512528 0.11356 0.000">
+						<geom name="thorax1" size="0.1 0.05" pos="-2.08988e-05 -0.22 0" quat="0.707 0 0.707 0" contype="0" conaffinity="0"/>
+						<geom name="thorax2" size="0.1 0.06" pos="-2.08988e-05 -0.08 0" quat="0.707 0 0.707 0" contype="0" conaffinity="0"/>
+						<body name="lowerneck" pos="-4.17976e-05 0.113945 0.0">
+							<geom name="lowerneck" size="0.1 0.08" pos="-0.00165071 -0.02 0." quat="0.707 0 0.707 0" contype="0" conaffinity="0"/>
+							<body name="upperneck" pos="-0.00330143 0.1104801 0.0">
+								<geom name="upperneck" size="0.04 0.0525272" pos="0.000500875 0.0 -0.0" quat="0.724521 0.68921 -0.00767204 0" contype="0" conaffinity="0"/>
+								<body name="head" pos="0.00100175 0.0899912 -0.00449288">
+									<geom name="head" size="0.09 0.044104" pos="0.000341465 0.048184 -0.0" quat="0.717887 0.696142 -0.00493334 0" contype="0" conaffinity="0"/>
+								</body>
+							</body>
+						</body>
+						<body name="lclavicle" pos="-4.17976e-05 0.113945 0.00468037">
+							<geom name="lclavicle" size="0.07 0.02986988" pos="0.19 0.0382636 0." quat="0.684 -0.1106 0.6984 0.1106" contype="0" conaffinity="0"/>
+						</body>
+						<body name="rclavicle" pos="-4.17976e-05 0.113945 0.00468037">
+							<geom name="rclavicle" size="0.07 0.02986988" pos="-0.19 0.0382636 0." quat="0.698 0.110 0.698 -0.11" contype="0" conaffinity="0"/>
+						</body>
+					</body>
+				</body>
+			</body>
+		</body>
+		<body name="hand mount right" pos="-0.5 -.45 0.2" euler="-1.57079632 0 0">
+			<body name="upperarm_right" childclass="Adroit" pos="0 -0.2 0">
+				<body name="upperarm2_right" pos="0 0 0">
+					<body name="upperarm3_right" pos="0 0 0" euler="0 0 -0. ">
+						<geom class="DC_Hand" name="C_upperarm_right" type="capsule" size="0.04 0.15 " pos="0 0.15 0" euler="-1.57 0 0"/>
+						<body name="forearm_right" childclass="Adroit" pos="0 0.3 0" euler="-1.5 -0. -0.5 ">
+							<geom class="DC_Hand" name="C_forearm_right" type="capsule" size="0.0325 0.12 " pos="0 -.0 0.15" euler="0 0 -1.57"/>
+							<body name="wrist_right" pos="0 0 0.3" euler="0 0 0">
+								<body name="wrist1_right" pos="0 0 0">
+									<geom class="DC_Hand" name="C_wrist1_right" type="sphere" size="0.001"/>
+									<body name="wrist2_right" pos="0 0 0" euler="0  0 -1.57 ">
+										<geom class="DC_Hand" name="C_wrist_right" type="sphere" pos="0 0 0.01" quat=".707 .707 0 0" size=".025"/>
+										<body name="palm_right" pos="0 0 0.034">
+											<body name="ff_cmc_right" pos="0.033 0 0.095">
+												<geom class="DC_Hand" name="C_ff_cmc_right" type="capsule" pos="-0.01 0 -0.0475" size="0.013 .0475" euler="0 0.16 0"/>
+												<body name="ffknuckle_right" pos="0.0 0 0.0">
+													<body name="ffproximal_right" pos="0 0 0">
+														<inertial pos="0.000 0.000 0.023" quat="0.707 -0.004 0.004 0.707" mass="0.014" diaginertia="0.00001 0.00001 0.00001"></inertial>
+														<geom class="DC_Hand" name="C_ffproximal_right" type="capsule" pos="0 0 .0225" size=".01 .0225"/>
+														<body name="ffmiddle_right" pos="0 0 0.045">
+															<geom class="DC_Hand" name="C_ffmiddle_right" type="capsule" pos="0 0 .0125" size=".00805 .0125"/>
+															<body name="ffdistal_right" pos="0 0 0.025">
+																<geom class="DC_Hand" name="C_ffdistal_right" type="capsule" pos="0 -.00 .012" size=".0075 .011 " condim="4" euler="0 0 0"/>
+															</body>
+														</body>
+													</body>
+												</body>
+											</body>
+											<body name="mf_cmc_right" pos="0.011 0 0.099">
+												<geom class="DC_Hand" name="C_mf_cmc_right" type="box" pos="-0.0055 0 -0.0495" size=".013 0.013 .052" euler="0 0.11 0"/>
+												<body name="mfknuckle_right" pos="0.0 0 0.0">
+													<inertial pos="-0.000 0.000 0.000" quat="0.520 0.854 0.006 -0.003" mass="0.008" diaginertia="0.00001 0.00001 0.00001"></inertial>
+													<body name="mfproximal_right" pos="0 0 0">
+														<geom class="DC_Hand" name="C_mfproximal_right" type="capsule" pos="0 0 .0225" size=".01 .0225"/>
+														<body name="mfmiddle_right" pos="0 0 0.045">
+															<geom class="DC_Hand" name="C_mfmiddle_right" type="capsule" pos="0 0 .0125" size=".00805 .0125"/>
+															<body name="mfdistal_right" pos="0 0 0.025">
+																<geom class="DC_Hand" name="C_mfdistal_right" type="capsule" pos="0 0 .012" size=".0075 .011 " condim="4" euler="0 0 0"/>
+															</body>
+														</body>
+													</body>
+												</body>
+											</body>
+											<body name="rf_cmc_right" pos="-0.011 0 0.095">
+												<geom class="DC_Hand" name="C_rf_cmc_right" type="box" pos="0.0055 0 -0.0475" size=".013  0.013 .055" euler="0 -0.11 0"/>
+												<body name="rfknuckle_right" pos="-0.0 0 0.0">
+													<body name="rfproximal_right" pos="0 0 0">
+														<geom class="DC_Hand" name="C_rfproximal_right" type="capsule" pos="0 0 .0225" size=".01 .0225"/>
+														<body name="rfmiddle_right" pos="0 0 0.045">
+															<geom class="DC_Hand" name="C_rfmiddle_right" type="capsule" pos="0 0 .0125" size=".00805 .0125"/>
+															<body name="rfdistal_right" pos="0 0 0.025">
+																<geom class="DC_Hand" name="C_rfdistal_right" type="capsule" pos="0 -.0 .012" size=".0075 .011 " condim="4" euler="0 0 0"/>
+															</body>
+														</body>
+													</body>
+												</body>
+											</body>
+											<body name="thbase_right" pos="0.034 -0.009 0.029" axisangle="0  1 0  0.785">
+												<body name="thproximal_right" pos="0 0 0">
+													<geom class="DC_Hand" name="C_thproximal_right" type="capsule" pos="0 0 .019" size=".013 .019"/>
+													<body name="thmiddle_right" pos="0 0 0.038">
+														<geom class="DC_Hand" name="C_thm_right" type="capsule" pos="0 0 .016" size=".011 .016"/>
+														<body name="thdistal_right" pos="0 0 0.032">
+															<geom class="DC_Hand" name="C_thdistal_right" type="capsule" pos="0 0 .016837" size=".01 .015" condim="4" euler="0 0 0"/>
+														</body>
+													</body>
+												</body>
+											</body>
+											<body name="lf_cmc_right" pos="-0.03 0 0.095">
+												<geom class="DC_Hand" name="C_lf_cmc_right" type="box" pos="0.01 0 -0.0475" size=".013 0.013 .052" euler="0 -0.2 0"/>
+												<body name="lfknuckle_right" pos="-0.0 0 0.0">
+													<body name="lfproximal_right" pos="0 0 0">
+														<geom class="DC_Hand" name="C_lfproximal_right" type="capsule" pos="0 0 .0125" size=".008 .015"/>
+														<body name="lfmiddle_right" pos="0 0 0.025">
+															<geom class="DC_Hand" name="C_lfmiddle_right" type="capsule" pos="0 0 .0125" size=".00705 .0125"/>
+															<body name="lfdistal_right" pos="0 0 0.025">
+																<geom class="DC_Hand" name="C_lfdistal_right" type="capsule" pos="0 0 .012" size=".006 .011 " condim="4" euler="0 0 0"/>
+															</body>
+														</body>
+													</body>
+												</body>
+											</body>
+										</body>
+									</body>
+								</body>
+							</body>
+						</body>
+					</body>
+				</body>
+			</body>
+		</body>
+		<body name="object_0" pos="0.0 0.0 0.006397251546893879" quat="1.0 0.0 0.0 0.0">
+			<joint name="object_0" type="free" armature="0.00001"/>
+			<geom name="object_0" size="0.006397251546893879" pos="0 0 0" type="sphere" rgba="1 0 0 1"/>
+		</body>
+		<body name="object_1" pos="0.0 0.0 0.005897735961326833" quat="1.0 0.0 0.0 0.0">
+			<joint name="object_1" type="free" armature="0.00001"/>
+			<geom name="object_1" size="0.005897735961326833 0.008216109211294315" pos="0 0 0" type="capsule" rgba="1 0 0 1" quat="0.707 0 0.707 0"/>
+		</body>
+		<body name="object_2" pos="0.0 0.0 0.00600650089120077" quat="1.0 0.0 0.0 0.0">
+			<joint name="object_2" type="free" armature="0.00001"/>
+			<geom name="object_2" size="0.006138290604181489 0.006535021945915189 0.00600650089120077" pos="0 0 0" type="box" rgba="1 0 0 1" quat="0.707 0 0.707 0"/>
+		</body>
+		<body name="object_3" pos="0.0 0.0 0.006775424825525276" quat="1.0 0.0 0.0 0.0">
+			<joint name="object_3" type="free" armature="0.00001"/>
+			<geom name="object_3" size="0.006775424825525276" pos="0 0 0" type="sphere" rgba="1 0 0 1" quat="0.707 0 0.707 0"/>
+		</body>
+		<body name="object_4" pos="0.0 0.0 0.005688090507042182" quat="1.0 0.0 0.0 0.0">
+			<joint name="object_4" type="free" armature="0.00001"/>
+			<geom name="object_4" size="0.005688090507042182 0.014368830914503791" pos="0 0 0" type="capsule" rgba="1 0 0 1" quat="0.707 0 0.707 0"/>
+		</body>
+	</worldbody>
+</mujoco>

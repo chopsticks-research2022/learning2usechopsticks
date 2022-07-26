@@ -1,0 +1,10 @@
+PyGLM==0.4.8b1
+
+-f https://download.pytorch.org/whl/torch_stable.html
+torch==1.9.0+cu111 
+
+scipy
+xmltodict
+gym
+IPython
+stable-baselines3

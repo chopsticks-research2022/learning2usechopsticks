@@ -1,0 +1,23 @@
+<mujoco>
+<body name="hand mount" pos="0 -.45 0.2" euler="-1.57079632 0 0">
+	<inertial mass="0.100" pos="0 0 0" diaginertia="0.001 0.001 0.001"/>
+	<body name="upperarm" childclass="Adroit" pos="0 -0.2 0">
+		<joint name="UARM1" type="hinge" pos="0 0 0" axis="1 0 0" range="-1.57 1.57" damping="0" armature="1"/>
+		<geom class="DC_Hand" name="C_upperarm1" type="sphere" size="0.001"/>
+		<body name="upperarm2" pos="0 0 0">
+			<geom class="DC_Hand" name="C_upperarm2" type="sphere" size="0.001"/>
+			<joint name="UARM2" type="hinge" pos="0 0 0" axis="0 0 1" range="-1.57 0" damping="0" armature="1"/>
+			<body name="upperarm3" pos="0 0 0">
+				<joint name="UARM3" type="hinge" pos="0 0 0" axis="0 -1 0" range="-1.57 1.57" damping="0" armature="1"/>
+				<geom class="DC_Hand" name="C_upperarm" type="capsule" size="0.04 0.15 " pos="0 0.15 0" euler="-1.57 0 0"/>
+				<body name="forearm" childclass="Adroit" pos="0 0.3 0" euler="0 0 0">
+					<inertial pos="0.001 -0.002 0.15" quat="0.982 -0.016 0.000 -0.188" mass="4" diaginertia="0.01 0.01 0.0075"/>
+					<joint name="FARM1" type="hinge" pos="0 0 0" axis="1 0 0" range="-1.57 1.57" damping="0" armature="1"/>
+					<geom class="DC_Hand" name="C_forearm" type="capsule" size="0.0325 0.12 " pos="0 -.0 0.15" euler="0 0 -1.57"/>
+					<include file="body/hand.xml"/>
+				</body>
+			</body>
+		</body>
+	</body>
+</body>
+</mujoco>
