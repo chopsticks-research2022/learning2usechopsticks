@@ -5,6 +5,9 @@ and [Libin Liu](http://libliu.info/)
 
 ACM Trans. Graph., Vol. 41, No. 4, Article 95. (SIGGRAPH 2022)
 
+[Paper](https://arxiv.org/abs/2205.14313)
+[Video](https://www.youtube.com/watch?v=rQHzwnSdsP8)
+
 ---
 
 ## Table of Contents
