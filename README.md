@@ -19,7 +19,7 @@ ACM Trans. Graph., Vol. 41, No. 4, Article 95. (SIGGRAPH 2022)
 
 ## Citation
 ```bibtex
-@article{
+@article{yang2022chop
 author = {Yang, Zeshi and Yin, Kangkang and Liu, Libin},
 title = {Learning to Use Chopsticks in Diverse Gripping Styles},
 year = {2022},
